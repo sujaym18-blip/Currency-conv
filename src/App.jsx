@@ -133,7 +133,7 @@ function App() {
         <div className="flex justify-center gap-6 mb-2">
 
           <a
-            href="https://www.instagram.com/sujaymishra_?igsh=MzZpMGhhMmJtcm1r"
+            href="https://github.com/dashboardr"
             target="_blank"
             className="text-white/60 hover:text-white transition text-xl"
             
