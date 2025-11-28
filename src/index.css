@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+    --g1: #6b21a8;
+    --g2: #8b5cf6;
+    --g3: #a78bfa;
+    --g4: #c4b5fd;
+}
+
+
+/* gradient background */
+
+.gradient-bg {
+    background: linear-gradient(135deg, rgba(107, 33, 168, 0.95) 0%, rgba(139, 92, 246, 0.9) 40%, rgba(167, 139, 250, 0.85) 70%, rgba(196, 181, 253, 0.8) 100%);
+    filter: saturate(110%);
+    transform: scale(1.05);
+    transition: filter .6s ease;
+}
+
+
+/* floating particles container */
+
+.particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+
+/* particle base */
+
+.particles>div {
+    position: absolute;
+    border-radius: 50%;
+    opacity: .12;
+    filter: blur(24px);
+    transform: translate3d(0, 0, 0);
+}
+
+
+/* individual particles */
+
+.particles .p1 {
+    width: 380px;
+    height: 380px;
+    left: -10%;
+    top: -5%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.06), transparent 40%), linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+    animation: float1 14s ease-in-out infinite;
+}
+
+.particles .p2 {
+    width: 260px;
+    height: 260px;
+    right: -5%;
+    top: 10%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
+    animation: float2 18s ease-in-out infinite;
+}
+
+.particles .p3 {
+    width: 200px;
+    height: 200px;
+    left: 10%;
+    bottom: -8%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+    animation: float3 16s ease-in-out infinite;
+}
+
+.particles .p4 {
+    width: 140px;
+    height: 140px;
+    right: 20%;
+    bottom: 5%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+    animation: float4 20s ease-in-out infinite;
+}
+
+.particles .p5 {
+    width: 90px;
+    height: 90px;
+    left: 50%;
+    top: 5%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+    animation: float5 12s ease-in-out infinite;
+}
+
+@keyframes float1 {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: .12;
+    }
+    50% {
+        transform: translateY(-18px) translateX(8px) scale(1.03);
+        opacity: .14;
+    }
+    100% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: .12;
+    }
+}
+
+@keyframes float2 {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: .11;
+    }
+    50% {
+        transform: translateY(-22px) translateX(-6px) scale(1.02);
+        opacity: .14;
+    }
+    100% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: .11;
+    }
+}
+
+@keyframes float3 {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: .09;
+    }
+    50% {
+        transform: translateY(-14px) translateX(6px) scale(1.02);
+        opacity: .12;
+    }
+    100% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: .09;
+    }
+}
+
+@keyframes float4 {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: .08;
+    }
+    50% {
+        transform: translateY(-26px) translateX(10px) scale(1.04);
+        opacity: .1;
+    }
+    100% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: .08;
+    }
+}
+
+@keyframes float5 {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: .07;
+    }
+    50% {
+        transform: translateY(-10px) translateX(-4px) scale(1.02);
+        opacity: .09;
+    }
+    100% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: .07;
+    }
+}
+
+
+/* subtle vignette */
+
+body::after {
+    content: "";
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.06) 100%);
+    z-index: 5;
+}
+
+
+/* card entrance */
+
+@keyframes cardPop {
+    0% {
+        transform: translateY(12px) scale(.995);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.z-10 {
+    animation: cardPop .45s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+
+/* small responsive tweak */
+
+@media (max-width:640px) {
+    .p1,
+    .p2 {
+        display: none;
+    }
+    .p3,
+    .p4,
+    .p5 {
+        opacity: .09;
+        filter: blur(18px);
+    }
+}
