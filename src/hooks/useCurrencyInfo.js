@@ -11,7 +11,7 @@ function useCurrencyInfo(base = "USD") {
             try {
                 const res = await fetch(url);
                 if (!res.ok) {
-                    // keep rates as {} on error
+                   
                     console.error("Currency API error:", res.status, res.statusText);
                     if (mounted) setRates({});
                     return;
@@ -27,7 +27,7 @@ function useCurrencyInfo(base = "USD") {
         return () => { mounted = false; };
     }, [base]);
 
-    return rates; // object mapping currency codes -> rate
+    return rates; 
 }
 
 export default useCurrencyInfo;
